@@ -45,10 +45,13 @@ output * bg $background fill
 #
 # Borders configuration
 #
-gaps inner 5
-gaps outer 0
+gaps inner 10
+gaps outer 5
 
 default_border pixel 0
+
+smart_gaps on
+smart_borders no_gaps
 
 ### Idle configuration
 #
@@ -85,11 +88,18 @@ input "1267:12322:ELAN1200:00_04F3:3022_Touchpad" {
     middle_emulation enabled
 }
 
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout us
+    xkb_variant intl
+    xkb_options caps:swapescape
+}
+
 input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     xkb_layout us
     xkb_variant intl
     xkb_options caps:swapescape
 }
+
 
 ### Key bindings
 #
@@ -253,18 +263,45 @@ mode "resize" {
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    output eDP-1
     position top
-	font pango:Source Sans Pro Bold, Awesome 11
+    #font pango:Source Sans Pro Bold, Awesome 11
+    font pango:Comfortaa Bold, Awesome 11
+    separator_symbol " "
+    bindsym button4 nop
+    bindsym button5 nop
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    #status_command while date +'%d/%m/%Y %H:%M:%S %p'; do sleep 1; done
-	status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks.conf
+    status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks.conf
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background #3c6eb4
+        separator  #ffffff
+        #                  BORDER    BG        FG
+        focused_workspace  #3c6eb400 #3c6eb400 #ffffff
+        inactive_workspace #29417200 #29417200 #5c5c5c
+        active_workspace   #3c6eb400 #3c6eb400 #5c5c5c
+        urgent_workspace   #3c6eb400 #3c6eb400 #5c5c5c
+        binding_mode       #3c6eb400 #3c6eb400 #5c5c5c
+    }
+}
+
+bar {
+    output HDMI-A-2
+    position top
+    font pango:Comfortaa Bold, Awesome 11
+    separator_symbol " "
+
+    colors {
+        statusline #ffffff
+        background #3c6eb4
+        separator  #ffffff
+        #                  BORDER    BG        FG
+        focused_workspace  #3c6eb400 #3c6eb400 #ffffff
+        inactive_workspace #29417200 #29417200 #5c5c5c
+        active_workspace   #3c6eb400 #3c6eb400 #5c5c5c
+        urgent_workspace   #3c6eb400 #3c6eb400 #5c5c5c
+        binding_mode       #3c6eb400 #3c6eb400 #5c5c5c
     }
 }
 
@@ -273,7 +310,6 @@ bar {
 # Start
 #
 exec mako
-exec weechat
 exec firefox
 exec alacritty
 
@@ -282,7 +318,6 @@ exec alacritty
 #
 assign [class="^Alacritty$"] 2
 assign [class="^Firefox$"]   1
-assign [class="^Weechat$"]   3
 
 ### Include configuration
 include /etc/sway/config.d/*
