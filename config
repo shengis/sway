@@ -81,6 +81,9 @@ smart_borders no_gaps
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+focus_follows_mouse no
+mouse_warping none
+
 input "1267:12322:ELAN1200:00_04F3:3022_Touchpad" {
     dwt enabled
     tap enabled
@@ -141,6 +144,7 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
 
     # exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
 #
 # Moving around:
 #
