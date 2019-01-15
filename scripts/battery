@@ -61,13 +61,10 @@ if ($percent < 5) {
 	print "#FF0000\n";
 } elsif ($percent < 50) {
 	print " $full_text\n";
-	print "#FFAE00\n";
 } elsif ($percent < 75) {
 	print " $full_text\n";
-	print "#FFF600\n";
 } else {
 	print " $full_text\n";
-	print "#A8FF00\n";
 }
 
 
