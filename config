@@ -314,8 +314,7 @@ bar {
 # Start
 #
 exec mako
-exec firefox
-exec alacritty
+exec gpg-agent --daemon --enable-ssh-support
 
 #
 # Assign applications to workspaces
