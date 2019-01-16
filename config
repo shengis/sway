@@ -113,9 +113,9 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     bindsym XF86MonBrightnessUp exec light -A 10 && pkill -SIGRTMIN+16 i3blocks
 
     # Control volume
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 '-5%' && pkill -SIGRTMIN+15 i3blocks
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 '+5%' && pkill -SIGRTMIN+15 i3blocks
-    bindsym XF86AudioMute exec pactl set-sink-volume 0 0 && pkill -SIGRTMIN+15 i3blocks
+    bindsym XF86AudioLowerVolume exec amixer set Master '5%-' && pkill -SIGRTMIN+15 i3blocks
+    bindsym XF86AudioRaiseVolume exec amixer set Master '5%+' && pkill -SIGRTMIN+15 i3blocks
+    bindsym XF86AudioMute exec amixer set Master toggle && pkill -SIGRTMIN+15 i3blocks
 
     # lock screen
     bindsym $mod+Escape exec swaylock -i $lockscreen -s fill
