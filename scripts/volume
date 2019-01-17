@@ -1,0 +1,37 @@
+#!/bin/sh
+# $1 volume +5, -5, 5 or toggle
+
+if [ "$1" != "toggle" ]; then
+	echo "$1" | grep -qE '^[+-]?[0-9]+%$'
+	if [ $? -ne 0 ]; then
+		echo "Volume must be in the form: [+-]5% or toggle"
+		exit 1
+	fi
+fi
+
+if [ -x /usr/bin/pactl ]; then
+	SINK="@DEFAULT_SINK@"
+
+	if [ "$1" == "toggle" ]; then
+		/usr/bin/pactl set-sink-mute $SINK toggle
+	else
+		/usr/bin/pactl set-sink-volume $SINK $1
+	fi
+elif [ -x /usr/bin/amixer ]; then
+	GROUP="Master"
+
+	if [ "$1" == "toggle" ]; then
+		/usr/bin/amixer -q set $GROUP toggle
+	else
+		VOLUME=$(echo "$1" | sed 's/\([+-]\?\)\([0-9]\+%\)/\2\1/')
+		/usr/bin/amixer -q set $GROUP $VOLUME
+	fi
+else
+	echo "pactl or amixer not found"
+	exit 1
+fi
+
+# Update i3blocks display
+pkill -SIGRTMIN+15 i3blocks
+
+exit 0
