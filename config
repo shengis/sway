@@ -142,8 +142,11 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     # reload the configuration file
     bindsym $mod+Shift+c reload
 
+	bindsym $mod+Shift+r exec systemctl reboot
+
     # exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+	bindsym $mod+Shift+e exit
 
 #
 # Moving around:
@@ -319,7 +322,6 @@ exec gpg-agent --daemon --enable-ssh-support
 #
 # Assign applications to workspaces
 #
-assign [class="^Alacritty$"] 2
 assign [class="^Firefox$"]   1
 
 ### Include configuration
