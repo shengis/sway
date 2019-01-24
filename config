@@ -67,6 +67,12 @@ smart_borders no_gaps
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+exec swayidle \
+     timeout 300 'swaylock -i $lockscreen -s fill' \
+     timeout 600 'swaymsg "output * dpms off"' \
+          resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -i $lockscreen -s fill'
+
 ### Input configuration
 #
 # Example configuration:
@@ -115,7 +121,7 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     # Control volume
     bindsym XF86AudioLowerVolume exec $XDG_CONFIG_HOME/sway/scripts/volume -5%
     bindsym XF86AudioRaiseVolume exec $XDG_CONFIG_HOME/sway/scripts/volume +5%
-	bindsym XF86AudioMute exec $XDG_CONFIG_HOME/sway/scripts/volume toggle
+    bindsym XF86AudioMute exec $XDG_CONFIG_HOME/sway/scripts/volume toggle
 
     # lock screen
     bindsym $mod+Escape exec swaylock -i $lockscreen -s fill
@@ -142,11 +148,11 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     # reload the configuration file
     bindsym $mod+Shift+c reload
 
-	bindsym $mod+Shift+r exec systemctl reboot
+    bindsym $mod+Shift+r exec systemctl reboot
 
     # exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-	bindsym $mod+Shift+e exit
+    bindsym $mod+Shift+e exit
 
 #
 # Moving around:
