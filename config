@@ -45,10 +45,12 @@ output * bg $background fill
 #
 # Borders configuration
 #
-gaps inner 10
+gaps inner 5
 gaps outer 5
 
-default_border pixel 0
+default_border pixel 5
+default_floating_border pixel 5
+hide_edge_borders none
 
 smart_gaps on
 smart_borders no_gaps
@@ -287,15 +289,16 @@ bar {
     status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks.conf
 
     colors {
+		background #3c6eb4
         statusline #ffffff
-        background #3c6eb4
-        separator  #ffffff
-        #                  BORDER    BG        FG
-        focused_workspace  #3c6eb400 #3c6eb400 #ffffff
-        inactive_workspace #29417200 #29417200 #5c5c5c
-        active_workspace   #3c6eb400 #3c6eb400 #5c5c5c
-        urgent_workspace   #3c6eb400 #3c6eb400 #5c5c5c
-        binding_mode       #3c6eb400 #3c6eb400 #5c5c5c
+        separator #666666
+
+        #                  BORDER  BG      FG
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
     }
 }
 
@@ -306,15 +309,16 @@ bar {
     separator_symbol " "
 
     colors {
+		background #3c6eb4
         statusline #ffffff
-        background #3c6eb4
-        separator  #ffffff
-        #                  BORDER    BG        FG
-        focused_workspace  #3c6eb400 #3c6eb400 #ffffff
-        inactive_workspace #29417200 #29417200 #5c5c5c
-        active_workspace   #3c6eb400 #3c6eb400 #5c5c5c
-        urgent_workspace   #3c6eb400 #3c6eb400 #5c5c5c
-        binding_mode       #3c6eb400 #3c6eb400 #5c5c5c
+        separator #666666
+
+        #                  BORDER  BG      FG
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
     }
 }
 
