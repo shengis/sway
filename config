@@ -27,8 +27,8 @@ set $term alacritty
 set $browser firefox
 
 # Image background
-set $background $XDG_CONFIG_HOME/sway/background.png
-set $lockscreen $XDG_CONFIG_HOME/sway/lockscreen.jpg
+set $background $HOME/.config/sway/background.png
+set $lockscreen $HOME/.config/sway/lockscreen.jpg
 
 ### Output configuration
 #
@@ -121,9 +121,9 @@ input "9494:26:CM_Storm_Keyboard_--_QuickFire_XT" {
     bindsym XF86MonBrightnessUp exec light -A 10 && pkill -SIGRTMIN+16 i3blocks
 
     # Control volume
-    bindsym XF86AudioLowerVolume exec $XDG_CONFIG_HOME/sway/scripts/volume -5%
-    bindsym XF86AudioRaiseVolume exec $XDG_CONFIG_HOME/sway/scripts/volume +5%
-    bindsym XF86AudioMute exec $XDG_CONFIG_HOME/sway/scripts/volume toggle
+    bindsym XF86AudioLowerVolume exec $HOME/.config/sway/scripts/volume -5%
+    bindsym XF86AudioRaiseVolume exec $HOME/.config/sway/scripts/volume +5%
+    bindsym XF86AudioMute exec $HOME/.config/sway/scripts/volume toggle
 
     # lock screen
     bindsym $mod+Escape exec swaylock -i $lockscreen -s fill
@@ -286,7 +286,7 @@ bar {
     bindsym button4 nop
     bindsym button5 nop
 
-    status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks.conf
+    status_command i3blocks -c $HOME/.config/sway/i3blocks.conf
 
     colors {
 		background #3c6eb4
